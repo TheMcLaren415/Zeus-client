@@ -175,7 +175,7 @@ body {
 .card-icon { font-size: 2rem; margin-bottom: 15px; }
 .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-/* БЛОК ЦЕН С АКЦИЕЙ И КРАСНЫМ 0 ₽ */
+/* Блок Тарифов и Акций */
 .pricing-grid {
     display: flex;
     justify-content: center;
@@ -262,7 +262,7 @@ body {
     color: var(--accent);
 }
 
-/* СТИЛИ СТРАНИЦ АВТОРИЗАЦИИ (login.html, register.html) */
+/* Страницы входа / регистрации / верификации */
 .auth-page {
     height: 100vh;
     display: flex;
@@ -292,7 +292,7 @@ body {
 
 .back-link:hover { color: var(--accent); }
 
-.auth-card h2 { margin: 15px 0 25px 0; }
+.auth-card h2 { margin: 15px 0 10px 0; }
 
 .form-group {
     text-align: left;
@@ -328,7 +328,50 @@ body {
 
 .auth-footer a { color: var(--accent); text-decoration: none; }
 
-/* СТИЛИ ЛИЧНОГО КАБИНЕТА (dashboard.html) */
+/* Модальное окно выбора авторизации */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Личный кабинет */
 .dash-header {
     display: flex;
     justify-content: space-between;
@@ -431,18 +474,17 @@ body {
     cursor: not-allowed;
 }
 
-.checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    color: var(--text-main);
-}
-
 footer {
     text-align: center;
     padding: 40px;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .dash-container { flex-direction: column; }
+    .dash-sidebar { width: 100%; }
 }
