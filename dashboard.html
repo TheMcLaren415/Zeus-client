@@ -6,37 +6,31 @@
     <title>Zeus Client — Личный Кабинет</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dashboard-body">
+<body>
 
-    <!-- Верхняя панель кабинета -->
     <header class="dash-header">
-        <div class="logo">ZEUS<span>CLIENT</span> <small class="ver">v1.0</small></div>
+        <a href="index.html" class="logo">ZEUS<span>CLIENT</span> <small class="ver">v1.0</small></a>
         <div class="user-info">
-            <span>Привет, <strong id="username">User_Zeus</strong></span>
-            <a href="index.html" class="btn-secondary nav-btn">Выйти</a>
+            <span>Привет, <strong id="usernameDisplay">User</strong></span>
+            <button onclick="handleLogout()" class="btn-secondary nav-btn">Выйти</button>
         </div>
     </header>
 
     <div class="dash-container">
-        <!-- Боковое меню -->
         <aside class="dash-sidebar">
             <div class="user-profile">
-                <div class="avatar">Z</div>
-                <h3>User_Zeus</h3>
+                <div class="avatar" id="avatarDisplay">U</div>
+                <p id="userEmailDisplay" style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;"></p>
                 <span class="status-badge">Подписка Активна</span>
             </div>
             <ul class="dash-menu">
                 <li class="active"><a href="#profile">Профиль и Лицензия</a></li>
                 <li><a href="#hwid">Настройки HWID</a></li>
-                <li><a href="#configs">Конфигурации</a></li>
-                <li><a href="#client-settings">Настройки Чита</a></li>
+                <li><a href="#settings">Настройки Чита</a></li>
             </ul>
         </aside>
 
-        <!-- Основной контент настроек -->
         <main class="dash-content">
-            
-            <!-- Секция: Скачать и Лицензия -->
             <div class="dash-card">
                 <h2>Ваша Лицензия</h2>
                 <div class="license-info">
@@ -44,47 +38,23 @@
                     <p><strong>Версия чита:</strong> Zeus v1.0 Release</p>
                     <p><strong>Ключ доступа:</strong> <code class="code-box">ZEUS-V10-FREE-PROMO-2026</code></p>
                 </div>
-                <button class="btn-primary download-btn">🚀 Скачать Zeus Client v1.0 (.EXE)</button>
+                <button class="btn-primary download-btn" onclick="alert('Скачивание Zeus Client v1.0 началось!')">
+                    🚀 Скачать Zeus Client v1.0 (.EXE)
+                </button>
             </div>
 
-            <!-- Секция: Привязка HWID -->
             <div class="dash-card">
-                <h2>Управление HWID (Привязка к ПК)</h2>
-                <p class="dash-desc">Ваша лицензия привязана к железу текущего ПК.</p>
+                <h2>Управление HWID (Железо)</h2>
+                <p class="dash-desc">Лицензия привязана к конфигурации вашего компьютера.</p>
                 <div class="form-group">
                     <label>Текущий HWID</label>
                     <input type="text" value="48F9-A21B-89C3-0012-ZEUS" readonly class="input-readonly">
                 </div>
                 <button class="btn-secondary">Запросить сброс HWID</button>
             </div>
-
-            <!-- Секция: Настройки Клиента -->
-            <div class="dash-card">
-                <h2>Настройки Клиента</h2>
-                <div class="form-group">
-                    <label>Цветовая тема ClickGUI</label>
-                    <select class="dash-select">
-                        <option>Zeus Cyan (По умолчанию)</option>
-                        <option>Neon Red</option>
-                        <option>Purple Darkness</option>
-                        <option>Matrix Green</option>
-                    </select>
-                </div>
-                <div class="form-group checkbox-group">
-                    <label>
-                        <input type="checkbox" checked> Автоматически загружать последнее обновление
-                    </label>
-                </div>
-                <div class="form-group checkbox-group">
-                    <label>
-                        <input type="checkbox" checked> Анонимный режим (Скрытие ника в игре)
-                    </label>
-                </div>
-                <button class="btn-primary">Сохранить настройки</button>
-            </div>
-
         </main>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
