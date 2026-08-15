@@ -1,11 +1,12 @@
 :root {
     --bg-color: #0b0d12;
     --card-bg: #141821;
-    --accent: #00d2ff; /* Электрический голубой для Zeus */
+    --accent: #00d2ff;
     --accent-hover: #00a8cc;
     --text-main: #ffffff;
     --text-muted: #9aa0a6;
     --border: #222938;
+    --red-sale: #ff3333;
 }
 
 * {
@@ -39,11 +40,11 @@ body {
 .logo {
     font-weight: 800;
     font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
 }
 
-.logo span {
-    color: var(--accent);
-}
+.logo span { color: var(--accent); }
 
 .ver {
     font-size: 0.75rem;
@@ -66,14 +67,9 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--text-main);
-}
+.nav-links a:hover { color: var(--text-main); }
 
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
+.nav-buttons { display: flex; gap: 10px; }
 
 /* Кнопки */
 .btn-primary, .btn-secondary {
@@ -103,14 +99,9 @@ body {
     border: 1px solid var(--border);
 }
 
-.btn-secondary:hover {
-    border-color: var(--accent);
-}
+.btn-secondary:hover { border-color: var(--accent); }
 
-.full-width {
-    width: 100%;
-    text-align: center;
-}
+.full-width { width: 100%; text-align: center; }
 
 /* Hero */
 .hero {
@@ -123,9 +114,7 @@ body {
     background: radial-gradient(circle at center, rgba(0, 210, 255, 0.12) 0%, transparent 70%);
 }
 
-.hero-content {
-    max-width: 800px;
-}
+.hero-content { max-width: 800px; }
 
 .badge {
     background: rgba(0, 210, 255, 0.15);
@@ -143,9 +132,7 @@ body {
     font-weight: 800;
 }
 
-.hero h1 span {
-    color: var(--accent);
-}
+.hero h1 span { color: var(--accent); }
 
 .hero p {
     color: var(--text-muted);
@@ -153,27 +140,16 @@ body {
     margin-bottom: 30px;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
+.hero-buttons { display: flex; gap: 15px; justify-content: center; }
 
-/* Секции */
+/* Карточки функций */
 .features, .pricing {
     padding: 100px 10%;
     text-align: center;
 }
 
-.features h2, .pricing h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.pricing-subtitle {
-    color: var(--text-muted);
-    margin-bottom: 50px;
-}
+.features h2, .pricing h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.pricing-subtitle { color: var(--text-muted); margin-bottom: 50px; }
 
 .cards-grid {
     display: grid;
@@ -196,21 +172,10 @@ body {
     border-color: var(--accent);
 }
 
-.card-icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
+.card-icon { font-size: 2rem; margin-bottom: 15px; }
+.card p { color: var(--text-muted); font-size: 0.95rem; }
 
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-/* Тарифы с перечеркнутыми ценами */
+/* БЛОК ЦЕН С АКЦИЕЙ И КРАСНЫМ 0 ₽ */
 .pricing-grid {
     display: flex;
     justify-content: center;
@@ -220,19 +185,19 @@ body {
 
 .price-card {
     background: var(--card-bg);
-    padding: 40px;
+    padding: 40px 30px;
     border-radius: 12px;
     border: 1px solid var(--border);
     width: 320px;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .price-card.popular {
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
 }
 
 .pop-badge {
@@ -247,34 +212,44 @@ body {
     font-weight: 800;
 }
 
-/* Перечеркнутая старая цена */
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 5px 0;
+}
+
 .price-old {
+    font-size: 1.5rem;
     text-decoration: line-through;
-    color: #ff4757;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: 15px;
-}
-
-.price {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-}
-
-.price.free-text {
-    color: var(--accent);
-}
-
-.price span {
-    font-size: 1rem;
     color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.price-sale {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--red-sale);
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+.promo-tag {
+    background: rgba(255, 51, 51, 0.15);
+    color: var(--red-sale);
+    border: 1px solid var(--red-sale);
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 2px 10px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
 .price-card ul {
     list-style: none;
     margin-bottom: 30px;
     text-align: left;
+    width: 100%;
 }
 
 .price-card li {
@@ -287,100 +262,53 @@ body {
     color: var(--accent);
 }
 
-/* Модальное окно (Аккаунты) */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+/* СТИЛИ СТРАНИЦ АВТОРИЗАЦИИ (login.html, register.html) */
+.auth-page {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s ease;
+    background: radial-gradient(circle at center, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.modal-card {
+.auth-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
+    padding: 40px;
     border-radius: 12px;
-    padding: 30px;
     width: 100%;
     max-width: 400px;
-    position: relative;
+    text-align: center;
 }
 
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.auth-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-}
-
-.tab-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 5px 10px;
-}
-
-.tab-btn.active {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-}
-
-.auth-form {
-    display: none;
-}
-
-.auth-form.active {
+.back-link {
     display: block;
-}
-
-.auth-form h3 {
+    text-align: left;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
     margin-bottom: 20px;
 }
+
+.back-link:hover { color: var(--accent); }
+
+.auth-card h2 { margin: 15px 0 25px 0; }
 
 .form-group {
-    margin-bottom: 15px;
     text-align: left;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
     font-size: 0.85rem;
     color: var(--text-muted);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
-.form-group input {
+.form-group input, .dash-select {
     width: 100%;
-    padding: 10px 15px;
+    padding: 12px 15px;
     background: var(--bg-color);
     border: 1px solid var(--border);
     border-radius: 6px;
@@ -388,20 +316,133 @@ body {
     outline: none;
 }
 
-.form-group input:focus {
+.form-group input:focus, .dash-select:focus {
     border-color: var(--accent);
 }
 
-/* Подвал */
+.auth-footer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.auth-footer a { color: var(--accent); text-decoration: none; }
+
+/* СТИЛИ ЛИЧНОГО КАБИНЕТА (dashboard.html) */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.user-info { display: flex; align-items: center; gap: 20px; }
+
+.dash-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.dash-sidebar {
+    width: 280px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    height: fit-content;
+}
+
+.user-profile { text-align: center; margin-bottom: 25px; }
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 auto 10px auto;
+}
+
+.status-badge {
+    display: inline-block;
+    background: rgba(0, 210, 255, 0.15);
+    color: var(--accent);
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+
+.dash-menu { list-style: none; }
+.dash-menu li { margin-bottom: 10px; }
+.dash-menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.dash-menu li.active a, .dash-menu a:hover {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--accent);
+}
+
+.dash-content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+.dash-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.dash-card h2 { margin-bottom: 15px; font-size: 1.3rem; }
+.dash-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
+
+.license-info p { margin-bottom: 8px; color: var(--text-muted); }
+.text-success { color: #2ed573; font-weight: 600; }
+
+.code-box {
+    background: var(--bg-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px dashed var(--accent);
+    color: var(--accent);
+    font-family: monospace;
+}
+
+.download-btn { margin-top: 15px; font-size: 1rem; }
+
+.input-readonly {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-muted) !important;
+    cursor: not-allowed;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
 footer {
     text-align: center;
     padding: 40px;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 2.2rem; }
 }
