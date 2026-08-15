@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://redesigned-space-orbit-4jvgqpp7rx7q3vgw-3000.app.github.dev/';
 
 // Проверка сессии пользователя
 function isLoggedIn() {
