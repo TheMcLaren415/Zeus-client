@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeus Client v1.0 — Next-Gen Utility Mod</title>
+    <title>Zeus Client v1.0 — Главная</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Навигация -->
     <nav class="navbar">
         <div class="logo">ZEUS<span>CLIENT</span> <small class="ver">v1.0</small></div>
         <ul class="nav-links">
             <li><a href="#features">Функции</a></li>
             <li><a href="#pricing">Тарифы</a></li>
-            <li><a href="#faq">FAQ</a></li>
         </ul>
         <div class="nav-buttons">
-            <button class="btn-secondary nav-btn" id="openAuthBtn">Войти</button>
-            <a href="#pricing" class="btn-primary nav-btn">Скачать</a>
+            <a href="login.html" class="btn-secondary nav-btn">Войти</a>
+            <a href="register.html" class="btn-primary nav-btn">Регистрация</a>
         </div>
     </nav>
 
-    <!-- Главный блок -->
     <header class="hero">
         <div class="hero-content">
             <span class="badge">🔥 Релиз версии 1.0 — Временная Акция</span>
             <h1>Доминируй в игре с <span>Zeus Client</span></h1>
-            <p>Максимальный FPS, незаметная защита от античитов и мощные модули. Заберите клиент **БЕСПЛАТНО** в рамках акции!</p>
+            <p>Максимальный FPS, незаметный Bypass и мощный функционал. Заберите клиент **БЕСПЛАТНО**!</p>
             <div class="hero-buttons">
-                <a href="#pricing" class="btn-primary">Забрать бесплатно</a>
-                <a href="https://discord.gg" target="_blank" class="btn-secondary">Discord Сервер</a>
+                <a href="#pricing" class="btn-primary">Забрать за 0 ₽</a>
+                <a href="register.html" class="btn-secondary">Создать аккаунт</a>
             </div>
         </div>
     </header>
 
-    <!-- Функции -->
     <section id="features" class="features">
         <h2>Преимущества Zeus Client</h2>
         <div class="cards-grid">
             <div class="card">
                 <div class="card-icon">⚡</div>
                 <h3>Bypass & Anti-Cheat</h3>
-                <p>Регулярные обновления v1.0 обходят современные серверные защиты в режиме реального времени.</p>
+                <p>Регулярные обновления обходят современные серверные защиты в режиме реального времени.</p>
             </div>
             <div class="card">
                 <div class="card-icon">🚀</div>
@@ -53,96 +49,62 @@
             <div class="card">
                 <div class="card-icon">🎨</div>
                 <h3>Кастомизация</h3>
-                <p>Удобное ClickGUI меню, поддержка тем, привязка клавиш и сохранение конфигов.</p>
+                <p>Удобный ClickGUI, привязка клавиш и гибкая настройка под любой стиль игры.</p>
             </div>
         </div>
     </section>
 
-    <!-- Тарифы и Акция -->
+    <!-- Тарифы -->
     <section id="pricing" class="pricing">
         <h2>Тарифные планы</h2>
-        <p class="pricing-subtitle">В честь релиза версии 1.0 действует ограниченная акция!</p>
+        <p class="pricing-subtitle">Специальное предложение в честь релиза v1.0!</p>
         
         <div class="pricing-grid">
-            <!-- Тариф Бесплатно (Акционный) -->
+            <!-- Бесплатный тариф -->
             <div class="price-card popular">
                 <span class="pop-badge">АКЦИЯ</span>
-                <h3>Free / Старт</h3>
-                <div class="price-old">499 ₽</div>
-                <div class="price free-text">БЕСПЛАТНО</div>
+                <h3>Free Start</h3>
+                
+                <div class="price-container">
+                    <span class="price-old">499 ₽</span>
+                    <span class="price-sale">0 ₽</span>
+                </div>
+                <div class="promo-tag">АКЦИЯ</div>
+
                 <ul>
                     <li>Полный доступ к v1.0</li>
                     <li>Все базовые & приватные модули</li>
                     <li>Авто-обновления</li>
                     <li>Доступ к Discord сообществу</li>
                 </ul>
-                <button class="btn-primary full-width" onclick="openAuthModal('register')">Получить бесплатно</button>
+                <a href="register.html" class="btn-primary full-width">Получить за 0 ₽</a>
             </div>
 
-            <!-- Тариф Навсегда VIP -->
+            <!-- VIP тариф -->
             <div class="price-card">
+                <span class="pop-badge">АКЦИЯ</span>
                 <h3>VIP Lifetime</h3>
-                <div class="price-old">1 990 ₽</div>
-                <div class="price">299 <span>₽</span></div>
+                
+                <div class="price-container">
+                    <span class="price-old">1 990 ₽</span>
+                    <span class="price-sale">0 ₽</span>
+                </div>
+                <div class="promo-tag">АКЦИЯ</div>
+
                 <ul>
                     <li>Приоритетная поддержка 24/7</li>
                     <li>Ранний доступ к бета-версиям v1.1+</li>
                     <li>Эксклюзивные кастомные темы</li>
-                    <li>Роль VIP в Discord</li>
+                    <li>Приоритетный HWID сброс</li>
                 </ul>
-                <button class="btn-secondary full-width" onclick="openAuthModal('register')">Купить VIP</button>
+                <a href="register.html" class="btn-secondary full-width">Забрать VIP за 0 ₽</a>
             </div>
         </div>
     </section>
-
-    <!-- Модальное окно Авторизации / Регистрации -->
-    <div class="modal-overlay" id="authModal">
-        <div class="modal-card">
-            <button class="modal-close" id="closeAuthBtn">&times;</button>
-            
-            <div class="auth-tabs">
-                <button class="tab-btn active" id="loginTabBtn">Вход</button>
-                <button class="tab-btn" id="registerTabBtn">Регистрация</button>
-            </div>
-
-            <!-- Форма Входа -->
-            <form id="loginForm" class="auth-form active">
-                <h3>Вход в аккаунт Zeus</h3>
-                <div class="form-group">
-                    <label>Логин или Email</label>
-                    <input type="text" placeholder="Введите логин" required>
-                </div>
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input type="password" placeholder="Введите пароль" required>
-                </div>
-                <button type="submit" class="btn-primary full-width">Войти</button>
-            </form>
-
-            <!-- Форма Регистрации -->
-            <form id="registerForm" class="auth-form">
-                <h3>Создать аккаунт Zeus</h3>
-                <div class="form-group">
-                    <label>Логин</label>
-                    <input type="text" placeholder="Придумайте логин" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="your@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input type="password" placeholder="Придумайте пароль" required>
-                </div>
-                <button type="submit" class="btn-primary full-width">Зарегистрироваться</button>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <p>&copy; 2026 Zeus Client v1.0. Все права защищены.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
