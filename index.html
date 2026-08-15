@@ -10,14 +10,13 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">ZEUS<span>CLIENT</span> <small class="ver">v1.0</small></div>
+        <a href="index.html" class="logo">ZEUS<span>CLIENT</span> <small class="ver">v1.0</small></a>
         <ul class="nav-links">
             <li><a href="#features">Функции</a></li>
             <li><a href="#pricing">Тарифы</a></li>
         </ul>
-        <div class="nav-buttons">
-            <a href="login.html" class="btn-secondary nav-btn">Войти</a>
-            <a href="register.html" class="btn-primary nav-btn">Регистрация</a>
+        <div class="nav-buttons" id="navAuthButtons">
+            <!-- Заполняется автоматически через script.js -->
         </div>
     </nav>
 
@@ -27,7 +26,7 @@
             <h1>Доминируй в игре с <span>Zeus Client</span></h1>
             <p>Максимальный FPS, незаметный Bypass и мощный функционал. Заберите клиент **БЕСПЛАТНО**!</p>
             <div class="hero-buttons">
-                <a href="#pricing" class="btn-primary">Забрать за 0 ₽</a>
+                <a href="#" onclick="handleDownloadClick(event)" class="btn-primary">Забрать за 0 ₽</a>
                 <a href="register.html" class="btn-secondary">Создать аккаунт</a>
             </div>
         </div>
@@ -54,50 +53,43 @@
         </div>
     </section>
 
-    <!-- Тарифы -->
     <section id="pricing" class="pricing">
         <h2>Тарифные планы</h2>
         <p class="pricing-subtitle">Специальное предложение в честь релиза v1.0!</p>
         
         <div class="pricing-grid">
-            <!-- Бесплатный тариф -->
             <div class="price-card popular">
                 <span class="pop-badge">АКЦИЯ</span>
                 <h3>Free Start</h3>
-                
                 <div class="price-container">
                     <span class="price-old">499 ₽</span>
                     <span class="price-sale">0 ₽</span>
                 </div>
                 <div class="promo-tag">АКЦИЯ</div>
-
                 <ul>
                     <li>Полный доступ к v1.0</li>
                     <li>Все базовые & приватные модули</li>
                     <li>Авто-обновления</li>
                     <li>Доступ к Discord сообществу</li>
                 </ul>
-                <a href="register.html" class="btn-primary full-width">Получить за 0 ₽</a>
+                <button onclick="handleDownloadClick(event)" class="btn-primary full-width">Получить за 0 ₽</button>
             </div>
 
-            <!-- VIP тариф -->
             <div class="price-card">
                 <span class="pop-badge">АКЦИЯ</span>
                 <h3>VIP Lifetime</h3>
-                
                 <div class="price-container">
                     <span class="price-old">1 990 ₽</span>
                     <span class="price-sale">0 ₽</span>
                 </div>
                 <div class="promo-tag">АКЦИЯ</div>
-
                 <ul>
                     <li>Приоритетная поддержка 24/7</li>
                     <li>Ранний доступ к бета-версиям v1.1+</li>
                     <li>Эксклюзивные кастомные темы</li>
                     <li>Приоритетный HWID сброс</li>
                 </ul>
-                <a href="register.html" class="btn-secondary full-width">Забрать VIP за 0 ₽</a>
+                <button onclick="handleDownloadClick(event)" class="btn-secondary full-width">Забрать VIP за 0 ₽</button>
             </div>
         </div>
     </section>
@@ -106,5 +98,6 @@
         <p>&copy; 2026 Zeus Client v1.0. Все права защищены.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
