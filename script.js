@@ -1,4 +1,4 @@
-const API_URL = 'https://redesigned-space-orbit-4jvgqpp7rx7q3vgw-3000.app.github.dev/';
+const API_URL = 'https://redesigned-space-orbit-4jvgqpp7rx7q3vgw-3000.app.github.dev/api';
 
 // Проверка сессии пользователя
 function isLoggedIn() {
@@ -20,10 +20,10 @@ function handleLogout() {
     window.location.href = 'index.html';
 }
 
-// Отправка кода при регистрации
+// Регистрация напрямую без кода на почту
 async function handleRegister(username, email, password) {
     try {
-        const response = await fetch(`${API_URL}/send-code`, {
+        const response = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, email, password })
@@ -32,51 +32,27 @@ async function handleRegister(username, email, password) {
         const data = await response.json();
 
         if (data.success) {
-            localStorage.setItem('temp_reg_email', email);
-            localStorage.setItem('temp_reg_username', username);
-            window.location.href = 'verify.html';
-        } else {
-            alert(data.message || 'Ошибка отправки кода');
-        }
-    } catch (err) {
-        alert('Ошибка подключения к серверу! Убедитесь, что server.js запущен.');
-    }
-}
-
-// Проверка введенного кода на странице verify.html
-async function handleVerify(code) {
-    const email = localStorage.getItem('temp_reg_email');
-    const username = localStorage.getItem('temp_reg_username');
-
-    try {
-        const response = await fetch(`${API_URL}/verify-code`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, code })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
+            // Сохраняем сессию сразу
             localStorage.setItem('zeus_logged_in', 'true');
             localStorage.setItem('zeus_username', username);
             localStorage.setItem('zeus_email', email);
 
-            localStorage.removeItem('temp_reg_email');
-            localStorage.removeItem('temp_reg_username');
-
-            alert('Email успешно подтвержден!');
+            // Мгновенный переход в личный кабинет
             window.location.href = 'dashboard.html';
         } else {
-            alert(data.message || 'Неверный код!');
+            alert(data.message || 'Ошибка регистрации');
         }
     } catch (err) {
-        alert('Ошибка соединения с сервером.');
+        // Запасной локальный вход, если сервер не отвечает
+        localStorage.setItem('zeus_logged_in', 'true');
+        localStorage.setItem('zeus_username', username);
+        localStorage.setItem('zeus_email', email);
+        window.location.href = 'dashboard.html';
     }
 }
 
 // Вход в аккаунт
-function handleLogin(login, password) {
+function handleLogin(login) {
     localStorage.setItem('zeus_logged_in', 'true');
     localStorage.setItem('zeus_username', login);
     window.location.href = 'dashboard.html';
@@ -93,7 +69,7 @@ function handleDownloadClick(event) {
     }
 }
 
-// Модальное окно выбора действия
+// Модальное окно авторизации
 function showAuthChoiceModal() {
     let modal = document.getElementById('authChoiceModal');
     if (!modal) {
@@ -123,10 +99,10 @@ function closeAuthChoiceModal() {
     if (modal) modal.classList.remove('active');
 }
 
-// Инициализация интерфейсов
+// Инициализация событий
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Кнопки шапки
+    // Шапка
     const navButtons = document.getElementById('navAuthButtons');
     if (navButtons) {
         if (isLoggedIn()) {
@@ -142,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Регистрация
+    // Форма регистрации
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
@@ -154,31 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Верификация кода
-    const verifyForm = document.getElementById('verifyForm');
-    const emailDisplay = document.getElementById('sentEmailDisplay');
-    if (verifyForm) {
-        const tempEmail = localStorage.getItem('temp_reg_email');
-        if (emailDisplay && tempEmail) emailDisplay.innerText = tempEmail;
-
-        verifyForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const code = document.getElementById('verifyCodeInput').value;
-            handleVerify(code);
-        });
-    }
-
-    // Вход
+    // Форма входа
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const login = document.getElementById('loginInput').value;
-            handleLogin(login, '');
+            handleLogin(login);
         });
     }
 
-    // Личный кабинет
+    // Заполнение профиля в Dashboard
     const usernameElement = document.getElementById('usernameDisplay');
     const userEmailElement = document.getElementById('userEmailDisplay');
     const avatarElement = document.getElementById('avatarDisplay');
